@@ -20,8 +20,7 @@ def exibir_menu():
     print('4. Sair\n')
 
 def finalizar():
-    os.system("cls")
-    print('Finalizando o programa \n')
+   sub_titulo('Finalizando o programa...')
     
 
 
@@ -51,17 +50,20 @@ def escolher_opcao(opcao_escolhida):
     print(f"Você escolheu a opção {opcao_escolhida}")
     escolher_opcao(opcao_escolhida)
 
-def cadastrar_restaurante():
+def sub_titulo(texto):
     os.system("cls")
-    print('Cadastrando restaurante...')
+    print(texto)
+    print("")
+
+def cadastrar_restaurante():
+    sub_titulo('Cadastrando restaurante...')
     nome_do_restaurante = input('Digite o nome do restaurante: ')
     restaurantes.append(nome_do_restaurante)
     print(f'Restaurante "{nome_do_restaurante}" cadastrado com sucesso!')
     voltar_menu()
 
 def listar_restaurantes():
-    os.system("cls")
-    print('Listando restaurantes...')
+    sub_titulo('Listando restaurantes...')
     for restaurante in restaurantes:
         print(f"- {restaurante}")
 
