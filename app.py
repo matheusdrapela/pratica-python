@@ -1,6 +1,6 @@
 import os
 
-restaurantes = []
+restaurantes = ["pizza", "hamburguer"]
 
 def exibir_tela_inicial():
     print("""
@@ -22,25 +22,34 @@ def exibir_menu():
 def finalizar():
     os.system("cls")
     print('Finalizando o programa \n')
+    
 
 
 def opcao_invalida():
     print('Opção inválida! Tente novamente.\n')
-    input("digite uma tecla para recomeçar")
-    main()
+    voltar_menu()
+
 
 
 def escolher_opcao(opcao_escolhida):
-    if opcao_escolhida == 1:
-        cadastrar_restaurante()
-    elif opcao_escolhida == 2:
-        listar_restaurantes()
-    elif opcao_escolhida == 3:
-        print('Ativando restaurante...')
-    elif opcao_escolhida == 4:
-        finalizar()
-    else:
+    try:
+        if opcao_escolhida == 1:
+            cadastrar_restaurante()
+        elif opcao_escolhida == 2:
+            listar_restaurantes()
+        elif opcao_escolhida == 3:
+            print('Ativando restaurante...')
+        elif opcao_escolhida == 4:
+            finalizar()
+        else:
+            opcao_invalida()
+
+    except ValueError:
         opcao_invalida()
+    
+    opcao_escolhida = int(input('Escolha uma opção: '))
+    print(f"Você escolheu a opção {opcao_escolhida}")
+    escolher_opcao(opcao_escolhida)
 
 def cadastrar_restaurante():
     os.system("cls")
@@ -48,15 +57,19 @@ def cadastrar_restaurante():
     nome_do_restaurante = input('Digite o nome do restaurante: ')
     restaurantes.append(nome_do_restaurante)
     print(f'Restaurante "{nome_do_restaurante}" cadastrado com sucesso!')
-    main()
+    voltar_menu()
 
 def listar_restaurantes():
     os.system("cls")
     print('Listando restaurantes...')
+    for restaurante in restaurantes:
+        print(f"- {restaurante}")
 
+    voltar_menu()
+
+def voltar_menu():
     input("digite uma tecla para recomeçar")
     main()
-
 
 def main():
     os.system("cls")
