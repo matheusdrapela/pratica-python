@@ -1,6 +1,8 @@
 import os
 
-restaurantes = ["pizza", "hamburguer"]
+restaurantes = [{'nome':'Praça', 'categoria':'Japonesa', 'ativo':False}, 
+                    {'nome':'Pizza Superma', 'categoria':'Pizza', 'ativo':True},
+                    {'nome':'Cantina', 'categoria':'Italiano', 'ativo':False}]
 
 def exibir_tela_inicial():
     print("""
@@ -65,10 +67,13 @@ def cadastrar_restaurante():
 def listar_restaurantes():
     sub_titulo('Listando restaurantes...')
     for restaurante in restaurantes:
-        print(f"- {restaurante}")
+        nome_restaurante = restaurante["nome"]
+        categoria_restaurante = restaurante["categoria"]
+        ativo_restaurante = restaurante["ativo"]
+        print(f"- {nome_restaurante} / {categoria_restaurante} / {ativo_restaurante}")
 
     voltar_menu()
-
+    
 def voltar_menu():
     input("digite uma tecla para recomeçar")
     main()
